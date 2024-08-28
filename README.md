@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Digging
 # 프로젝트 시작
 
@@ -12,3 +13,6 @@ nodemon server.js<br>
 react폴더안에서<br>
 npm start
 
+=======
+# Dggingg-server
+>>>>>>> d26f8c56bd90d1bf2c0aa2a07799cdacc4588c15
