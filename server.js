@@ -15,6 +15,17 @@ const { S3Client } = require("@aws-sdk/client-s3");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 
+const corsOptions = {
+  origin: [
+    "https://web-digging-fr-m0e1rvdd84ededf2.sel4.cloudtype.app",
+    // 'http://localhost:3000' 로컬 환경에서 허용
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+
 const s3 = new S3Client({
   region: "ap-northeast-2",
   credentials: {
