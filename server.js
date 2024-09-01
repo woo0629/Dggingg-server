@@ -78,6 +78,7 @@ const frontendBuildPath = path.join(
   "build"
 );
 app.use(express.static(frontendBuildPath));
+console.log("Frontend build path:", frontendBuildPath);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(frontendBuildPath, "index.html"));
