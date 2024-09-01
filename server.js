@@ -18,7 +18,8 @@ const multerS3 = require("multer-s3");
 const corsOptions = {
   origin: [
     "https://web-digging-fr-m0e1rvdd84ededf2.sel4.cloudtype.app",
-    // 'http://localhost:3000' 로컬 환경에서 허용
+    "https://port-0-digging-server-m0e1rvdd84ededf2.sel4.cloudtype.app",
+    "http://localhost:8080",
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
