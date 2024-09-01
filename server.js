@@ -64,8 +64,8 @@ new MongoClient(url)
     console.log(err);
   });
 
-app.listen(8080, () => {
-  console.log("http://localhost:8080 에서 서버 실행중");
+app.listen(8080, "0.0.0.0", () => {
+  console.log("서버가 0.0.0.0:8080에서 실행 중");
 });
 
 // app.use(express.static(path.join(__dirname, "pandaproject/build")));
