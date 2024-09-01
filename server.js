@@ -67,10 +67,20 @@ app.listen(8080, () => {
   console.log("http://localhost:8080 에서 서버 실행중");
 });
 
-app.use(express.static(path.join(__dirname, "pandaproject/build")));
+// app.use(express.static(path.join(__dirname, "pandaproject/build")));
+
+const frontendBuildPath = path.join(
+  "C:",
+  "Users",
+  "jaewoo",
+  "Desktop",
+  "pandaproject",
+  "build"
+);
+app.use(express.static(frontendBuildPath));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "pandaproject/build/index.html"));
+  res.sendFile(path.join(frontendBuildPath, "index.html"));
 });
 
 passport.use(
@@ -594,5 +604,5 @@ app.get("/manager/alerts/:id", async (req, res) => {
 
 //이거 맨밑으로
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "pandaproject/build/index.html"));
+  res.sendFile(path.join(frontendBuildPath, "index.html"));
 });
