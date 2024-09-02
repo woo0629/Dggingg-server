@@ -15,6 +15,8 @@ const { S3Client } = require("@aws-sdk/client-s3");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 
+const frontendUrl = process.env.FRONTEND_URL;
+
 const corsOptions = {
   origin: [
     "https://web-digging-fr-m0e1rvdd84ededf2.sel4.cloudtype.app",
@@ -70,19 +72,8 @@ app.listen(8080, "0.0.0.0", () => {
 
 // app.use(express.static(path.join(__dirname, "pandaproject/build")));
 
-const frontendBuildPath = path.join(
-  "C:",
-  "Users",
-  "jaewoo",
-  "Desktop",
-  "pandaproject",
-  "build"
-);
-app.use(express.static(frontendBuildPath));
-console.log("Frontend build path:", frontendBuildPath);
-
 app.get("/", (req, res) => {
-  res.sendFile(path.join(frontendBuildPath, "index.html"));
+  res.redirect(frontendUrl);
 });
 
 passport.use(
@@ -607,5 +598,5 @@ app.get("/manager/alerts/:id", async (req, res) => {
 
 //이거 맨밑으로
 app.get("*", function (req, res) {
-  res.sendFile(path.join(frontendBuildPath, "index.html"));
+  res.redirect(frontendUrl);
 });
