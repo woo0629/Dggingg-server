@@ -67,7 +67,7 @@ new MongoClient(url)
     console.log(err);
   });
 
-app.listen(URL, "0.0.0.0", () => {
+app.listen(8080, "0.0.0.0", () => {
   console.log("서버가 ${PORT}에서 실행 중");
 });
 
