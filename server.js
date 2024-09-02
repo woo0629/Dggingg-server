@@ -16,11 +16,14 @@ const multer = require("multer");
 const multerS3 = require("multer-s3");
 
 const frontendUrl = process.env.FRONTEND_URL;
-const serverUrl = process.env.SERVER_URL;
-const PORT = process.env.SERVER_URL || 8080; //포가서 설정된 경우 사용
+const PORT = process.env.SERVER_URL; //|| 8080; 포가서 설정된 경우 사용
 
 const corsOptions = {
-  origin: [`${frontendUrl}`, `${serverUrl}`, "http://localhost:8080"],
+  origin: [
+    "https://web-digging-fr-m0e1rvdd84ededf2.sel4.cloudtype.app",
+    "https://port-0-digging-server-m0e1rvdd84ededf2.sel4.cloudtype.app",
+    "http://localhost:8080",
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
