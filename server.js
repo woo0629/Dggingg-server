@@ -16,7 +16,7 @@ const multer = require("multer");
 const multerS3 = require("multer-s3");
 
 const frontendUrl = process.env.FRONTEND_URL;
-const PORT = process.env.SERVER_URL; //|| 8080; 포가서 설정된 경우 사용
+const URL = process.env.SERVER_URL; //|| 8080; 포가서 설정된 경우 사용
 
 const corsOptions = {
   origin: [
@@ -67,7 +67,7 @@ new MongoClient(url)
     console.log(err);
   });
 
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(URL, "0.0.0.0", () => {
   console.log("서버가 ${PORT}에서 실행 중");
 });
 
