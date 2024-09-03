@@ -70,14 +70,14 @@ client
   })
   .catch((err) => {
     console.error("DB 연결 실패:", err);
-  })
-  .finally(() => {
-    // 클라이언트를 종료하는 부분
-    client
-      .close()
-      .then(() => console.log("DB 클라이언트 종료"))
-      .catch((err) => console.error("DB 클라이언트 종료 실패:", err));
   });
+// .finally(() => {
+//   // 클라이언트를 종료하는 부분
+//   client
+//     .close()
+//     .then(() => console.log("DB 클라이언트 종료"))
+//     .catch((err) => console.error("DB 클라이언트 종료 실패:", err));
+// });
 
 // app.use(express.static(path.join(__dirname, "pandaproject/build")));
 
