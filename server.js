@@ -19,6 +19,7 @@ const url = process.env.DB_URL;
 const client = new MongoClient(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  tls: true,
 });
 
 const corsOptions = {
