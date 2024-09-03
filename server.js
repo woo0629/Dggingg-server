@@ -14,9 +14,12 @@ const { ObjectId } = require("mongodb");
 const { S3Client } = require("@aws-sdk/client-s3");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
-
 const frontendUrl = process.env.FRONTEND_URL;
-const URL = process.env.SERVER_URL || 8080; // 포가서 설정된 경우 사용
+const url = process.env.DB_URL;
+const client = new MongoClient(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const corsOptions = {
   origin: [
@@ -56,21 +59,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(passport.initialize());
 
-let db;
-const url = process.env.DB_URL;
-new MongoClient(url)
+client
   .connect()
-  .then((client) => {
-    console.log("DB연결성공");
-    db = client.db("digging");
+  .then(() => {
+    console.log("DB 연결 성공");
+    const db = client.db("digging");
+    // 추가적인 데이터베이스 작업을 여기에서 수행합니다.
   })
   .catch((err) => {
-    console.log(err);
+    console.error("DB 연결 실패:", err);
+  })
+  .finally(() => {
+    // 클라이언트를 종료하는 부분
+    client
+      .close()
+      .then(() => console.log("DB 클라이언트 종료"))
+      .catch((err) => console.error("DB 클라이언트 종료 실패:", err));
   });
-
-app.listen(8080, "0.0.0.0", () => {
-  console.log("서버가 ${PORT}에서 실행 중");
-});
 
 // app.use(express.static(path.join(__dirname, "pandaproject/build")));
 
