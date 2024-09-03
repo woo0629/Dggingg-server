@@ -29,7 +29,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-console.log("cors 설정 완료".corsOptions);
+console.log("cors 설정 완료", corsOptions);
+app.options("*", cors(corsOptions));
 
 const s3 = new S3Client({
   region: "ap-northeast-2",
