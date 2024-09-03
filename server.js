@@ -59,11 +59,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(passport.initialize());
 
+let db;
 client
   .connect()
   .then(() => {
     console.log("DB 연결 성공");
-    const db = client.db("digging");
+    db = client.db("digging");
     // 추가적인 데이터베이스 작업을 여기에서 수행합니다.
   })
   .catch((err) => {
