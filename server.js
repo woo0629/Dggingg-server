@@ -62,7 +62,7 @@ new MongoClient(url)
   .connect()
   .then((client) => {
     console.log("DB연결성공");
-    db = client.db("panda");
+    db = client.db("digging");
   })
   .catch((err) => {
     console.log(err);
