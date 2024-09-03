@@ -181,7 +181,6 @@ app.get(
 // });
 
 app.post("/signup", async (req, res) => {
-  res.send("Sign endpoint");
   const userData = req.body;
   console.log(userData);
 
