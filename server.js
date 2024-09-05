@@ -37,7 +37,7 @@ console.log("cors 설정 완료", corsOptions);
 app.options("*", cors(corsOptions));
 
 const s3 = new S3Client({
-  region: "ap-northeast-2",
+  region: process.env.S3_BUCKET_REGION,
   credentials: {
     accessKeyId: process.env.S3_KEY,
     secretAccessKey: process.env.S3_SECRET,
@@ -48,7 +48,7 @@ const s3 = new S3Client({
 const upload = multer({
   storage: multerS3({
     s3: s3,
-    bucket: "digging",
+    bucket: process.env.S3_BUCKET_NAME,
     key: function (req, file, cb) {
       cb(null, Date.now().toString()); //업로드시 파일명 변경가능
     },
