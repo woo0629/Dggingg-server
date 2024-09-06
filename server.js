@@ -254,7 +254,8 @@ app.post("/edit/:id", upload.single("image"), async (req, res) => {
 
   // 새 이미지를 업로드하지 않은 경우 기존 이미지 URL을 유지합니다.
   const newImage = req.file ? req.file.location : currentImage;
-
+  console.log("existingItem", existingItem);
+  console.log("newImage", newImage);
   await db.collection(req.params.id).updateOne(
     { _id: objId },
     {
