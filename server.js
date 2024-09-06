@@ -245,6 +245,16 @@ app.delete("/category/:id/detail", async (req, res) => {
 
 app.post("/edit/:id", upload.single("image"), async (req, res) => {
   let objId = new ObjectId(req.body._id);
+
+  // 현재 데이터에서 기존 이미지 URL을 가져옵니다.
+  const existingItem = await db
+    .collection(req.params.id)
+    .findOne({ _id: objId });
+  const currentImage = existingItem ? existingItem.image : null;
+
+  // 새 이미지를 업로드하지 않은 경우 기존 이미지 URL을 유지합니다.
+  const newImage = req.file ? req.file.location : currentImage;
+
   await db.collection(req.params.id).updateOne(
     { _id: objId },
     {
@@ -254,7 +264,7 @@ app.post("/edit/:id", upload.single("image"), async (req, res) => {
         title: req.body.title,
         content: req.body.content,
         price: req.body.price,
-        image: req.file ? req.file.location : "",
+        image: newImage,
       },
     }
   );
