@@ -619,3 +619,8 @@ app.get("/manager/alerts/:id", async (req, res) => {
 app.get("*", function (req, res) {
   res.redirect(frontendUrl);
 });
+
+const port = process.env.SERVER_URL || 8080;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
