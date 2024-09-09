@@ -615,12 +615,12 @@ app.get("/manager/alerts/:id", async (req, res) => {
   }
 });
 
-//이거 맨밑으로
-app.get("*", function (req, res) {
-  res.redirect(frontendUrl);
-});
-
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+});
+
+//이거 맨밑으로
+app.get("*", function (req, res) {
+  res.redirect(frontendUrl);
 });
